@@ -1,23 +1,30 @@
 // main.js
+
+$(document).ready(function() {
+  const header = $("header .inner");
+
+  $(window).scroll(function() {
+    const scrollTop = $(this).scrollTop();
+
+    // scrollTop 값에 따라 색상 변경
+    if (scrollTop < 1000) {
+      header.css("color", "#FCFEE6"); // 기본 색상
+    } else if (scrollTop >= 1000 && scrollTop < 1900) {
+      header.css("color", "#E16559"); // 특정 구간 색상
+    } else if (scrollTop >= 1900 && scrollTop < 2900) {
+      header.css("color", "#C6D7F3"); // 특정 구간 색상
+    } else {
+      header.css("color", "#84B9BF"); // 다른 색상
+    }
+    // console.log(scrollTop);
+  });
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
-// gsap.to('#box1', {
-//   duration: 3, // => 움직이는 시간
-//   // borderRadius: 100, // => %값
-//   opacity: 0.5, // => 투명도
-//   backgroundColor: '#dedede', // =>
-//   skewX: 20, // =>
-//   // scale: 1.5, // => 크기
-//   // rotate: 180, // =>회전
-//   // x: 300, y: 200, // => 위치값
-//   scrollTrigger: {
-//     trigger: '#box1',
-//     start: 150,
-//   }, // 스크롤을 내려서 #box1 뷰포트에 보이자마자 애니메이션을 동작하기 시작 -> 첫화면에 보이는 요소는 불필요
-// })
-const ani1 = gsap.timeline()
-
-ani1.to('.m_v_text', {scale: 2, opacity: 0})
+// 텍스트 애니메이션
+const ani1 = gsap.timeline();
+ani1.to('.m_v_text', {scale: 2, opacity: 0, duration: 3});
 
 ScrollTrigger.create({
   animation: ani1,
@@ -26,36 +33,56 @@ ScrollTrigger.create({
   end: '+=600',
   pin: true,
   scrub: true,
-  markers: true,
-})
-$(document).ready(function() {
-  let navMenu = ['main_profile', 'main_skill', 'main_portfolio', 'contact_txt']
-  $('header nav a').click(function() {
-    let n = $(this).index();
-    $('html').animate({
-      scrollTop: $(`.${navMenu[n]}`).offset().top
-    })
-  })
-})
-// 스크롤 페이지 이동연습 : 추후삭제
-{/* <script>
-  $(document).ready(function() { //정답은 아니지만 방법론을 찾아내는것이 중요!!
-    let pos = ['main_visual', 'earth_wrap', 'course_wrap', 'faculty_wrap', 'news_wrap']
-    $(window).scroll(function() {
-      for(let i = 0; i<pos.length; i++) {
-        if($(window).scrollTop() >= $(`.${pos[i]}`).offset().top - 120) {
-          $('.main_nav a').removeClass('active')
-          $('.main_nav a').eq(i).addClass('active')
-        }
-      }
-    })
-    $('.main_nav a').click(function() {
-      $('.main_nav a').not(this).removeClass('active')
-      $(this).addClass('active')
-      let n = $(this).index();
-      $('html').animate({
-        scrollTop: $(`.${pos[n]}`).offset().top
-      })
-    })
-  })
-</script> */}
+  // markers: true,
+});
+
+const skillCards = gsap.utils.toArray('.card_box');
+
+skillCards.forEach(card => {
+  const front = card.querySelector('.front');
+  const back = card.querySelector('.back');
+
+  // 카드 호버 시 애니메이션 추가
+  card.addEventListener('mouseenter', () => {
+    gsap.to(front, { rotationY: 180, duration: 0.6, ease: 'power2.out' });
+    gsap.to(back, { rotationY: 0, duration: 0.6, ease: 'power2.out' });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    gsap.to(front, { rotationY: 0, duration: 0.6, ease: 'power2.out' });
+    gsap.to(back, { rotationY: 180, duration: 0.6, ease: 'power2.out' });
+  });
+});
+
+
+skillCards.forEach((card, index) => {
+  gsap.from(card, {
+    opacity: 0,
+    y: 50, // 아래에서 위로
+    duration: 1,
+    delay: index * 0.3, // 카드가 하나씩 나타나도록 지연 추가
+    scrollTrigger: {
+      trigger: card,
+      start: "top 80%", // 카드가 뷰포트의 80% 위치에 도달했을 때 시작
+      toggleActions: "play none none reverse", // 나타났다 사라지는 동작
+    },
+  });
+});
+
+// 가로 스크롤 애니메이션
+let sections = gsap.utils.toArray('.main_projactList');
+
+gsap.to(sections, {
+  xPercent: -100 * (sections.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#horizontal",
+    pin: true,
+    scrub: 1,
+    snap: 1 / (sections.length - 1),
+    // end: '+=600',
+    end: () => "+=" + (document.querySelector("#horizontal").scrollWidth - innerWidth),
+    markers: true,
+  },
+});
+

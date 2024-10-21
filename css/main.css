@@ -45,10 +45,6 @@ main .main_visual {
   background-color: var(--p-tomato);
   display: flex;align-items: center;justify-content: center;
 }
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
 main .main_visual .m_v_text {
   display: flex;flex-direction: column;
   text-align: start;font-size: 16px;
@@ -57,6 +53,10 @@ main .main_visual .m_v_text {
 .textList {
   opacity: 0;
   animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
 .textList:nth-child(1) {animation-delay: 0s;}
 .textList:nth-child(2) {animation-delay: 0.5s;}
@@ -135,7 +135,6 @@ main .main_profile .main_right .title_text strong {
   padding-bottom: 40px;
 }
 main .main_profile .main_right .tt1_wrap {
-
   padding: 10px 0 0 90px ;font-weight: 600;
 }
 main .main_profile .main_right p {padding: 10px 0 0 90px ;}
@@ -175,7 +174,7 @@ main .main_skill .card_box .back {
 .skill_box .card1 .back {background: #2FA3F7;color: #001D34;}
 .skill_box .card2 .back {background: #F79500;color: #310000;}
 .skill_box .card3 .back {background: #9D56F7;color: #F7F7F7;}
-.skill_box .card4 .back {background: #2B2A2F;color: #147DCA;}
+.skill_box .card4 .back {background: #2B2A2F;color: #E4E4E4;}
 .skill_box .card5 .back {background: #F7F7F7;color: #121A27;}
 .skill_box .card6 .back {background: #DD4B25;color: #E4E4E4;}
 .skill_box .card7 .back {background: #254BDD;color: #E4E4E4;}
@@ -199,6 +198,14 @@ main .main_portfolio {
   display: flex;justify-content: center;align-items: center;
   width: 100%;height: 100vh;background: #FFF;
 }
+#horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 400%;
+}
+#horizontal > section {
+  width: 100%;
+}
 main .main_portfolio .tt3_wrap {
   position: absolute;left: 0;top: 137px;
   display: flex;flex-direction: column;gap: 13px;
@@ -210,7 +217,7 @@ main .main_portfolio .main_projactList {
   display: flex;gap: 50px;
 }
 main .main_portfolio .main_projactList .img_box {
-  width: 100%;display: flex;flex-direction: column;align-items: end;
+  width: 100vw;display: flex;flex-direction: column;align-items: end;
 }
 main .main_portfolio .main_projactList .img_box img {
   width: 466px;height: 350px;border-radius: 10px;
