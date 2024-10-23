@@ -15,10 +15,8 @@ $(window).scroll(function() {
   } else {
     header.css("color", "#84B9BF"); // 다른 색상
   }
-  console.log(scrollTop);
+  // console.log(scrollTop);
 });
-
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +53,6 @@ skillCards.forEach(card => {
   });
 });
 
-
 skillCards.forEach((card, index) => {
   gsap.from(card, {
     opacity: 0,
@@ -83,8 +80,21 @@ gsap.to(sections, {
     scrub: 1,
     snap: 1 / (sections.length - 1),
     // snap: 1 / sections.length,
-    end: '+=4000',
+    end: '+=5000',
     markers: true,
   },
 });
 
+// gotop button
+$(window).scroll(function() {
+  // top button controll
+  if ($(this).scrollTop() > 1000) {
+    $('.gotop_btn').fadeIn();
+  } else {
+    $('.gotop_btn').fadeOut();
+  }
+});
+
+$(".gotop_btn").click(function() {
+  $('html, body').animate({scrollTop:0}, '500');
+});
