@@ -98,3 +98,41 @@ $(window).scroll(function() {
 $(".gotop_btn").click(function() {
   $('html, body').animate({scrollTop:0}, '500');
 });
+
+// 세로 원페이지스크롤
+$('nav li').click(function() {
+  $('nav li').not(this).removeClass('active')
+  $(this).addClass('active')
+  let n = $(this).index()
+  pageScroll(n)
+});
+
+$('section').each(function() {
+  $(this).on('mousewheel DOMMouseScroll', function(e) {
+    let delta = e.originalEvent.deltaY;
+    let moveTop = 0;
+
+    if(delta > 0) { //down
+      moveTop = $(this).next().offset().top
+    } else { //up
+      moveTop = $(this).prev().offset().top
+    }
+    $('html, body').stop().animate({
+      scrollTop: moveTop + 'px'
+    }, 300)
+  })
+})
+$(window).scroll(function() {
+  winTop = $(window).scrollTop();
+  for(let i = 1; i < 5; i++) {
+    if(winTop >= $('section').eq(i).offset().top) {
+      $('nav li').removeClass('active')
+      $('nav li').eq(i).addClass('active')
+    }
+  }
+})
+function pageScroll(n) {
+  $('html, body').animate({
+    scrollTop: $('section').eq(n).offset().top
+  })
+}
