@@ -112,7 +112,7 @@ main .main_visual .m_v_mouse i:nth-child(2) {animation-delay: 1s;}
 main .main_profile {
   width: 100%;height: 100vh;background: var(--p-base);
   position: relative;
-  display: flex;gap: 50px;align-items: center;justify-content: center;
+  display: flex;align-items: center;justify-content: center;
 }
 main .main_profile .tt_wrap {
   display: flex;flex-direction: column;
@@ -124,7 +124,7 @@ main .main_profile .tt_wrap strong {
   font-size: 50px;color: var(--p-tomato);
 }
 main .main_profile .main_left {
-  /* position: absolute;left: 279px;top: 164px; */
+  padding-right: 90px;
   display: flex;flex-direction: column;gap: 20px;
   color: var(--p-text1);
 }
@@ -143,22 +143,21 @@ main .main_profile .main_left p {
 }
 main .main_profile .main_right {
   border-left: 1px solid var(--p-blue5);
-  color: var(--p-text2);
+  color: var(--p-text2);padding-left: 90px;gap: 10px;line-height: 29px;
 }
 main .main_profile .main_right .tt1_wrap {
   font-weight: 600;
 }
-main .main_profile .main_right p {padding: 10px 0 0 90px ;}
-
 @media screen and (max-width: 640px) {
-  main .main_profile {flex-direction: column;}
+  main .main_profile {flex-direction: column;gap: 20px;}
   main .main_profile .tt_wrap span {font-size: 16px;}
   main .main_profile .tt_wrap strong {font-size: 24px;}
-  main .main_profile .main_left {flex-direction: row;align-items: end;}
+  main .main_profile .main_left {flex-direction: row;align-items: end;padding-right: 0;}
   main .main_profile .main_left strong {font-size: 18px;}
   main .main_profile .main_left p {font-size: 16px;}
-  main .main_profile .main_right strong {font-size: 18px;padding: 10px;}
-  main .main_profile .main_right p {font-size: 16px;padding: 10px 0 0 10px;}
+  main .main_profile .main_right {line-height: 23px;padding-left: 0;}
+  main .main_profile .main_right strong {font-size: 18px;}
+  main .main_profile .main_right p {font-size: 16px;}
 }
 /* main_skill */
 main .main_skill {
