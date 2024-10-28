@@ -42,7 +42,7 @@ header .inner nav ul {
   text-align: center;font-size: 20px;
 }
 @media screen and (max-width: 640px) {
-  header .inner {font-size: 20px;}
+  header .inner {font-size: 20px;justify-content: flex-end;}
   header .inner nav {display: none;}
   header .inner nav ul {font-size: 16px;gap: 10px;}
 }
@@ -147,6 +147,7 @@ main .main_profile .main_right .tt1_wrap {
   font-weight: 600;
 }
 @media screen and (max-width: 640px) {
+  main .main_profile .tt_wrap {top: 50px;gap: 5px;}
   main .main_profile {flex-direction: column;gap: 20px;}
   main .main_profile .tt_wrap span {font-size: 16px;}
   main .main_profile .tt_wrap strong {font-size: 24px;}
@@ -154,7 +155,7 @@ main .main_profile .main_right .tt1_wrap {
   main .main_profile .main_left img {width: 150px;height: 150px;}
   main .main_profile .main_left strong {font-size: 18px;}
   main .main_profile .main_left p {font-size: 14px;}
-  main .main_profile .main_right {width: 90%;line-height: 20px;padding-left: 0;}
+  main .main_profile .main_right {width: 90%;line-height: 20px;padding-left: 0;border-left:none;}
   main .main_profile .main_right strong {font-size: 18px;}
   main .main_profile .main_right p {font-size: 16px;}
 }
@@ -210,6 +211,7 @@ main .main_skill .skill_box p {
 }
 
 @media screen and (max-width: 640px) {
+  main .main_skill .tt2_wrap {top: 50px;gap: 5px;}
   main .main_skill .skill_box {
     flex-wrap: wrap;justify-content: center;
   }
@@ -261,9 +263,10 @@ main .main_portfolio #horizontal .main_projactList .img_box img {
   filter: drop-shadow(3px 3px 3px #746C6C);
 }
 @media screen and (max-width: 640px) {
+  main .main_portfolio .tt3_wrap {top: 50px;gap: 5px;}
+  main .main_portfolio .tt3_wrap span {font-size: 16px;}
+  main .main_portfolio .tt3_wrap strong {font-size: 24px;}
   main .main_portfolio #horizontal {width: 80%;gap: 0;}
-  main .main_portfolio #horizontal .tt3_wrap span {font-size: 16px;}
-  main .main_portfolio #horizontal .tt3_wrap strong {font-size: 24px;}
   main .main_portfolio #horizontal .main_projactList {
     display: flex;gap: 10px;
   }

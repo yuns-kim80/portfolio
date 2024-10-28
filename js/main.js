@@ -86,7 +86,7 @@ gsap.to(sections, {
     },
     // snap: 1 / sections.length,
     end: '+=5000',
-    markers: true,
+    // markers: true,
   },
 });
 
