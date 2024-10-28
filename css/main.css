@@ -184,7 +184,7 @@ main .main_skill .card_box .back {
   height: 100%;
   position: absolute;
   backface-visibility: hidden; /* 뒷면 보이지 않게 */
-  display: flex;
+  display: flex;flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s;
@@ -209,6 +209,7 @@ main .main_skill .skill_box p {
   display: flex;align-items: center;justify-content: center;
   text-align: center;line-height: 25px;
 }
+main .main_skill .card_box .back span {display: flex;}
 
 @media screen and (max-width: 640px) {
   main .main_skill .tt2_wrap {top: 50px;gap: 5px;}
