@@ -85,8 +85,8 @@ gsap.to(sections, {
       ease: "power1.inOut"
     },
     // snap: 1 / sections.length,
-    end: '+=5000',
-    // markers: true,
+    end: '+=9000',
+    markers: true,
   },
 });
 
